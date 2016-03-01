@@ -87,7 +87,7 @@
                     <view key="view" contentMode="scaleToFill" id="WJO-Ke-pty">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Take a Picture" image="picture-image2" selectedImage="picture-image2" id="9dU-Fn-WWh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -95,6 +95,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g02-u7-SEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1484" y="1129"/>
+        </scene>
+        <!--Caption View Controller-->
+        <scene sceneID="1rW-FK-CcU">
+            <objects>
+                <viewController storyboardIdentifier="captionVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G3j-3B-lrd" customClass="CaptionViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ccM-qx-vHr"/>
+                        <viewControllerLayoutGuide type="bottom" id="giA-EP-jzg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="twX-DH-blj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZW-Or-1tp">
+                                <rect key="frame" x="129" y="194" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sHx-11-b9N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="1848"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hfr-sv-pCm">

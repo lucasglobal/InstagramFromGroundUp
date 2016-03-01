@@ -12,6 +12,9 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.alpha = 0
+        self.navigationController?.navigationBar.alpha = 0
+
         // Do any additional setup after loading the view.
     }
 
@@ -21,16 +24,35 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidAppear(animated: Bool) {
+        self.tabBarController?.tabBar.alpha = 0
+        self.navigationController?.navigationBar.alpha = 0
+
+        
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.Camera
-        
         self.presentViewController(vc, animated: true, completion: nil)
+        //change tabbar controlle just when viewController was displayed
+        delay(1) {
+            self.tabBarController?.selectedIndex = 0
+        }
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+        let captionVC = storyboard?.instantiateViewControllerWithIdentifier("captionVC") as! CaptionViewController
+        self.tabBarController?.presentViewController(captionVC, animated: true, completion: nil)
+        
+    }
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     /*
     // MARK: - Navigation
