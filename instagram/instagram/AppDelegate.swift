@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        //connects with server
+        Parse.initializeWithConfiguration(
+            ParseClientConfiguration(block: { (configuration:ParseMutableClientConfiguration) -> Void in
+                configuration.applicationId = "instagramFromGroundUp"
+                configuration.clientKey = "naneninonu"
+                configuration.server = "https://radiant-fortress-19628.herokuapp.com/parse"
+            })
+        )
+        
+        //verify if exists current user in cache memory
+        if PFUser.currentUser() != nil{
+            let rootViewController = self.window!.rootViewController as! UINavigationController
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("viewController") as! ViewController
+            rootViewController.pushViewController(viewController, animated: true)
+        }
+
         // Override point for customization after application launch.
         return true
     }
