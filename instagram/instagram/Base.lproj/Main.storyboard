@@ -79,7 +79,7 @@
         <!--Take a Picture-->
         <scene sceneID="wts-Sn-jKP">
             <objects>
-                <viewController id="32g-wx-6v3" sceneMemberID="viewController">
+                <viewController id="32g-wx-6v3" customClass="TakePictureViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JP9-7E-5RG"/>
                         <viewControllerLayoutGuide type="bottom" id="V7H-9d-2li"/>
