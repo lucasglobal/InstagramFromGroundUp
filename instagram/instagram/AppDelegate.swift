@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if PFUser.currentUser() != nil{
             let rootViewController = self.window!.rootViewController as! UINavigationController
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("viewController") as! ViewController
+            let viewController = mainStoryboard.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
             rootViewController.pushViewController(viewController, animated: true)
         }
 

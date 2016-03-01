@@ -49,14 +49,14 @@
                     <connections>
                         <outlet property="passwordField" destination="47q-TO-RBc" id="Byv-9P-ddT"/>
                         <outlet property="userNameField" destination="XHv-6s-noW" id="hiI-HP-oNi"/>
-                        <segue destination="97S-ki-zch" kind="presentation" identifier="loginSegue" id="sH4-m2-oU8"/>
+                        <segue destination="6gu-KX-bIJ" kind="presentation" identifier="loginSegue" id="sH4-m2-oU8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1092" y="337"/>
         </scene>
-        <!--View Controller-->
+        <!--Timeline-->
         <scene sceneID="KBG-kp-Ce3">
             <objects>
                 <viewController storyboardIdentifier="viewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="97S-ki-zch" customClass="ViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -69,11 +69,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="world-image2" selectedImage="world-image2" id="gcM-sJ-rAn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCa-IC-kl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="337"/>
+            <point key="canvasLocation" x="1922" y="1129"/>
+        </scene>
+        <!--Take a Picture-->
+        <scene sceneID="wts-Sn-jKP">
+            <objects>
+                <viewController id="32g-wx-6v3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JP9-7E-5RG"/>
+                        <viewControllerLayoutGuide type="bottom" id="V7H-9d-2li"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WJO-Ke-pty">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Take a Picture" image="picture-image2" selectedImage="picture-image2" id="9dU-Fn-WWh"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g02-u7-SEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1484" y="1129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Hfr-sv-pCm">
@@ -94,5 +115,27 @@
             </objects>
             <point key="canvasLocation" x="280" y="337"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="0vJ-a1-ST5">
+            <objects>
+                <tabBarController storyboardIdentifier="tabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6gu-KX-bIJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="bEL-PX-28X">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="97S-ki-zch" kind="relationship" relationship="viewControllers" id="cfR-2M-dqx"/>
+                        <segue destination="32g-wx-6v3" kind="relationship" relationship="viewControllers" id="fM9-u1-fOI"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UdF-q1-nHG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1675" y="337"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="picture-image2" width="60" height="60"/>
+        <image name="world-image2" width="60" height="60"/>
+    </resources>
 </document>
