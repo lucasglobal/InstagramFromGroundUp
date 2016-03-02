@@ -17,13 +17,16 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         self.tabBarController?.tabBar.alpha = 1
         self.navigationController?.navigationBar.alpha = 1
-
+        
+                
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-
+    func logOut(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 }
 

@@ -60,13 +60,11 @@ class LoginViewController: UIViewController {
             }
             else{
                 if error?.code == 202{
-                    
+                    print("User name is taken)")
                 }
-                print("User name is taken)")
             }
         }
     }
-
     /*
     // MARK: - Navigation
 

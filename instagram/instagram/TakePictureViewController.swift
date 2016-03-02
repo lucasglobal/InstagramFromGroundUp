@@ -30,7 +30,7 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         
         let vc = UIImagePickerController()
         vc.delegate = self
-        vc.allowsEditing = true
+        //vc.allowsEditing = true
         vc.sourceType = UIImagePickerControllerSourceType.Camera
         self.presentViewController(vc, animated: true, completion: nil)
         //change tabbar controlle just when viewController was displayed
@@ -40,11 +40,13 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
     }
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+
         let captionVC = storyboard?.instantiateViewControllerWithIdentifier("captionVC") as! CaptionViewController
-        self.tabBarController?.presentViewController(captionVC, animated: true, completion: nil)
+        captionVC.pictureTaken = originalImage
         
+        self.navigationController?.pushViewController(captionVC, animated: true)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     func delay(delay:Double, closure:()->()) {
         dispatch_after(

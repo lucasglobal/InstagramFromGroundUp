@@ -8,28 +8,78 @@
 
 import UIKit
 
-class CaptionViewController: UIViewController {
+class CaptionViewController: UIViewController, UITextViewDelegate {
 
+    var pictureTaken: UIImage!
+    var descriptionWasEdited: Bool = false
+    
+    @IBOutlet weak var buttonEndEditing: UIButton!
+    @IBOutlet weak var textViewDescription: UITextView!
+    @IBOutlet weak var pictureTakenImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.pictureTakenImageView.image = self.pictureTaken
+        
+        self.textViewDescription.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
+        //
+        let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: "sendButtonNavigationBar")
+        self.navigationItem.rightBarButtonItem = sendButton
+        
+        let button = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "goBack")
+        self.navigationItem.leftBarButtonItem = button
+
 
         // Do any additional setup after loading the view.
     }
-
+    func sendButtonNavigationBar(){
+        print("send to server")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textViewDidBeginEditing(textView: UITextView) {
+        //keep text if user has already written something
+        if !descriptionWasEdited {
+            self.textViewDescription.text = ""
+            descriptionWasEdited = true
+        }
     }
-    */
+    
+    //move view up if editing
+    func keyboardWillShow(sender: NSNotification){
+        if let keyboardSize = (sender.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+            UIView.animateWithDuration(2, animations: { () -> Void in
+                self.buttonEndEditing.alpha = 1
+            })
+        }
+    }
+    //move view down if editing
+    func keyboardWillHide(sender: NSNotification){
+        if let keyboardSize = (sender.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+            UIView.animateWithDuration(2, animations: { () -> Void in
+                self.buttonEndEditing.alpha = 0
+            })
+
+        }
+
+    }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        //dismiss keyboard
+        self.view.endEditing(true)
+    }
+
+    @IBAction func endEditingAction(sender: AnyObject) {
+        self.view.endEditing(true)
+    }
+    func goBack(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
 
 }

@@ -105,19 +105,36 @@
                         <viewControllerLayoutGuide type="bottom" id="giA-EP-jzg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="twX-DH-blj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZW-Or-1tp">
-                                <rect key="frame" x="129" y="194" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0M-N5-MSf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" text="Write your description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1g2-hP-zoG">
+                                <rect key="frame" x="0.0" y="425" width="320" height="52"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3t-GD-HUe">
+                                <rect key="frame" x="121" y="474" width="78" height="30"/>
+                                <state key="normal" title="End Editing"/>
+                                <connections>
+                                    <action selector="endEditingAction:" destination="G3j-3B-lrd" eventType="touchUpInside" id="4WX-TM-eV2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="buttonEndEditing" destination="J3t-GD-HUe" id="JIF-Ou-LrE"/>
+                        <outlet property="pictureTakenImageView" destination="B0M-N5-MSf" id="cLd-94-HkN"/>
+                        <outlet property="textViewDescription" destination="1g2-hP-zoG" id="JcU-Wz-PU1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sHx-11-b9N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
