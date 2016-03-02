@@ -19,13 +19,12 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.pictureTakenImageView.image = self.pictureTaken
-        
         self.textViewDescription.delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
-        //
+    
         let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: "sendButtonNavigationBar")
         self.navigationItem.rightBarButtonItem = sendButton
         
@@ -37,6 +36,13 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     }
     func sendButtonNavigationBar(){
         print("send to server")
+        
+        print("size \(pictureTaken.size)")
+        let resizedPicture = self.resize(pictureTaken, newSize: CGSize(width: 200, height: 267))
+        
+        Post.postUserImage(resizedPicture, withCaption: self.textViewDescription.text) { (completed: Bool, error: NSError?) -> Void in
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,5 +87,21 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     func goBack(){
         self.navigationController?.popViewControllerAnimated(true)
     }
-
+    func resize(image: UIImage, newSize: CGSize) -> UIImage{
+        let resizeImageView = UIImageView(frame: CGRectMake(0, 0, newSize.width, newSize.height))
+        resizeImageView.contentMode = .ScaleAspectFill
+        resizeImageView.image = image
+        
+        UIGraphicsBeginImageContext(resizeImageView.frame.size)
+        resizeImageView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }
+
+
+
+
+
+

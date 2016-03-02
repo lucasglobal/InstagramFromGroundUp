@@ -31,7 +31,12 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         let vc = UIImagePickerController()
         vc.delegate = self
         //vc.allowsEditing = true
-        vc.sourceType = UIImagePickerControllerSourceType.Camera
+        if(UIImagePickerController.isSourceTypeAvailable(.Camera)){
+            vc.sourceType = UIImagePickerControllerSourceType.Camera
+        }
+        else{
+            vc.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        }
         self.presentViewController(vc, animated: true, completion: nil)
         //change tabbar controlle just when viewController was displayed
         delay(1) {

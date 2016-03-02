@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class ViewController: UIViewController {
+    @IBOutlet weak var imageViewFetched: UIImageView!
 
+    var postsFetched: NSArray!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -18,7 +22,15 @@ class ViewController: UIViewController {
         self.tabBarController?.tabBar.alpha = 1
         self.navigationController?.navigationBar.alpha = 1
         
-                
+        
+        if let postsFetched = self.postsFetched{
+            print(postsFetched[0]["media"]!)
+        }
+        else{
+            self.getPosts()
+        }
+        //print(posts[0])
+    
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,6 +39,31 @@ class ViewController: UIViewController {
 
     func logOut(){
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    func getPosts(){
+        let query = PFQuery(className: "Post")
+        query.orderByAscending("createdAt")
+        query.includeKey("author")
+        
+        query.limit = 20
+        
+        //fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+            if let posts = posts{
+                if !posts.isEmpty{
+                    //print(posts)
+                    self.postsFetched = posts
+                    self.viewDidAppear(true)
+                }
+                else{
+                    print("there is no posts")
+                }
+            }
+            else{
+                print("posts error")
+            }
+        }
+
     }
 }
 
