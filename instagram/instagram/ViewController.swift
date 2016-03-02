@@ -8,9 +8,10 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class ViewController: UIViewController {
-    @IBOutlet weak var imageViewFetched: UIImageView!
+    @IBOutlet weak var imageViewFetched: PFImageView!
 
     var postsFetched: NSArray!
     
@@ -24,7 +25,11 @@ class ViewController: UIViewController {
         
         
         if let postsFetched = self.postsFetched{
-            print(postsFetched[0]["media"]!)
+            let media = (postsFetched[0]["media"])!
+            print("image data \(media!)")
+            self.imageViewFetched.file =  ((media! as? PFFile))
+            self.imageViewFetched.loadInBackground()
+    
         }
         else{
             self.getPosts()
