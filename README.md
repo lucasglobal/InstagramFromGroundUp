@@ -32,6 +32,7 @@ The following **additional** features are implemented:
 - [x] Personalized UITextView behaviours
 - [x] Personalized navigation bar
 - [x] Personalized tableView with section headers
+- [x] RefreshControl
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
