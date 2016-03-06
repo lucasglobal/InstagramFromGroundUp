@@ -8,13 +8,17 @@
 
 import UIKit
 import Parse
+import MBProgressHUD
+
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var userNameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let notificationSettings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         // Do any additional setup after loading the view.
     }
 
@@ -24,22 +28,41 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignIn(sender: AnyObject) {
-        if PFUser.currentUser() != nil{
-        }
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+
 
         PFUser.logInWithUsernameInBackground(userNameField.text!, password: passwordField.text!)
             { (user: PFUser?, error: NSError?) -> Void in
             if user != nil{
                 print("you are logged in")
-                if PFUser.currentUser() != nil{
-                }
+                
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+
                 
                 let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
                 self.navigationController!.pushViewController(viewController, animated: true)
             }
+            else{
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                //alert of wrong action
+                let alert = UIAlertController(title: "Incorrect username or password ", message: "Please, try again", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: .Default) { (action: UIAlertAction) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+            
         }
     }
     @IBAction func onSignUp(sender: AnyObject) {
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+
         let newUser = PFUser()
         
         newUser.username = userNameField.text
@@ -51,9 +74,9 @@ class LoginViewController: UIViewController {
         newUser.signUpInBackgroundWithBlock { (success: Bool, error:  NSError?) -> Void in
             if success{
                 print("created user")
-                if PFUser.currentUser() != nil{
-                    print("there is a current user4")
-                }
+                
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
 
                 let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
                 self.navigationController!.pushViewController(viewController, animated: true)
@@ -61,20 +84,21 @@ class LoginViewController: UIViewController {
 
             }
             else{
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                //alert of wrong action
+                let alert = UIAlertController(title: "Username already exists", message: "Please, try a different username", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Ok", style: .Default) { (action: UIAlertAction) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+
                 if error?.code == 202{
                     print("User name is taken)")
                 }
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

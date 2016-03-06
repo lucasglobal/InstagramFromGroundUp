@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 import ParseUI
+import MBProgressHUD
+
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -19,6 +21,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //set up refreshControl
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        self.tableView.insertSubview(refreshControl, atIndex: 0)
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -26,10 +33,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tabBarController?.tabBar.alpha = 1
         self.navigationController?.navigationBar.alpha = 1
         
-        if self.postsFetched == nil{
-            self.getPosts()
-        }
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        self.getPosts()
+      
         self.tableView.reloadData()
+    }
+    func refreshControlAction(refreshControl: UIRefreshControl){
+        
+        let query = PFQuery(className: "Post")
+        query.orderByDescending("createdAt")
+        
+        query.includeKey("author")
+        query.limit = 20
+        
+        //fetch data asynchronously
+        query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
+            if let posts = posts{
+                if !posts.isEmpty{
+                    self.postsFetched = posts
+                    self.tableView.reloadData()
+                }
+                else{
+                    print("there is no posts")
+                }
+            }
+            else{
+                print("posts error")
+            }
+        }
+
+        refreshControl.endRefreshing()
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,7 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func getPosts(){
         let query = PFQuery(className: "Post")
-        query.orderByAscending("createdAt")
+        query.orderByDescending("createdAt")
         
         query.includeKey("author")
         query.limit = 20
@@ -51,7 +86,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             if let posts = posts{
                 if !posts.isEmpty{
                     self.postsFetched = posts
-                    self.viewDidAppear(true)
+                    
+                    // Hide HUD once the network request comes back (must be done on main UI thread)
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    
+                    self.tableView.reloadData()
                 }
                 else{
                     print("there is no posts")

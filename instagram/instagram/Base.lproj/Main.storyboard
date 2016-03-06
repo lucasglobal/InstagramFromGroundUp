@@ -44,12 +44,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="n01-mK-7U5"/>
+                    <navigationItem key="navigationItem" id="n01-mK-7U5">
+                        <barButtonItem key="backBarButtonItem" title="Logout" id="g2e-aY-uvp"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="passwordField" destination="47q-TO-RBc" id="Byv-9P-ddT"/>
                         <outlet property="userNameField" destination="XHv-6s-noW" id="hiI-HP-oNi"/>
-                        <segue destination="6gu-KX-bIJ" kind="presentation" identifier="loginSegue" id="sH4-m2-oU8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -72,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="426" id="293-yS-uOb" customClass="PostsTableViewCell" customModule="instagram" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="426" id="293-yS-uOb" customClass="PostsTableViewCell" customModule="instagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="426"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="293-yS-uOb" id="5F3-Sk-5i8">
@@ -125,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="1922" y="1129"/>
         </scene>
-        <!--Take a Picture-->
+        <!--Picture-->
         <scene sceneID="wts-Sn-jKP">
             <objects>
                 <viewController id="32g-wx-6v3" customClass="TakePictureViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -138,7 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Take a Picture" image="picture-image2" selectedImage="picture-image2" id="9dU-Fn-WWh"/>
+                    <tabBarItem key="tabBarItem" title="Picture" image="picture-image2" selectedImage="picture-image2" id="9dU-Fn-WWh"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g02-u7-SEl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,7 +158,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0M-N5-MSf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0M-N5-MSf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" text="Write your description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1g2-hP-zoG">
@@ -213,6 +214,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="tabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6gu-KX-bIJ" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bEL-PX-28X">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

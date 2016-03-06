@@ -46,7 +46,7 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         Post.postUserImage(resizedPicture, withCaption: self.textViewDescription.text) { (completed: Bool, error: NSError?) -> Void in
             // Hide HUD once the network request comes back (must be done on main UI thread)
             MBProgressHUD.hideHUDForView(self.view, animated: true)
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewControllerAnimated(false)
 
         }
     }
