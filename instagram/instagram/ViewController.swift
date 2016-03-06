@@ -152,20 +152,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         let returnedView = UIView()
         returnedView.frame = CGRectMake(0, 0, 100, 60)
-        returnedView.backgroundColor = UIColor.whiteColor()
-            
+        returnedView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+    
+
+        
         
         let buttonProfilePicture = UIButton(type: UIButtonType.System)
         //centralizing button taking into consideration header view and size of button(10)
         buttonProfilePicture.frame = CGRectMake(0,returnedView.frame.size.height/2 - 15, 20, 20)
-        buttonProfilePicture.backgroundColor = UIColor.whiteColor()
+        buttonProfilePicture.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         buttonProfilePicture.setImage(UIImage(named: "personal-icon"), forState: .Normal)
         buttonProfilePicture.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
 
         let buttonName = UIButton(type: UIButtonType.System)
         //centralizing button taking into consideration header view and size of button(10)
         buttonName.frame = CGRectMake(buttonProfilePicture.frame.origin.x + 20, returnedView.frame.size.height/4 + 5, 500, 10)
-        buttonName.backgroundColor = UIColor.whiteColor()
+        buttonName.backgroundColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         buttonName.setTitle(author.username!, forState: UIControlState.Normal)
         buttonName.setTitleColor( UIColor.init(red: 49/255.0, green: 139/255.0, blue: 196/255.0, alpha: 1), forState: .Normal)
         buttonName.titleLabel!.font = UIFont(name: "HelveticaNeue", size: 15)
@@ -175,6 +177,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         returnedView.addSubview(buttonProfilePicture)
         returnedView.addSubview(buttonName)
         
+        //adding blur effect
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+            UIBlurEffectStyle.Light))
+        blur.frame = CGRectMake(0, 0, self.view.frame.width, 60)
+        blur.userInteractionEnabled = false //This allows touches to forward to the button.
+        returnedView.insertSubview(blur, atIndex: 0)
         
         return returnedView
     }
