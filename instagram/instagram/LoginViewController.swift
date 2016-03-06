@@ -64,6 +64,22 @@ class LoginViewController: UIViewController {
 
                 
                 let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+                viewController.tabBar.tintColor = UIColor(red: 126/255.0, green: 68/255.0, blue: 225/255.0, alpha: 1)
+                viewController.tabBar.backgroundColor = UIColor(red: 1, green: 1, blue:1, alpha: 0.5)
+                viewController.tabBar.translucent = true
+                
+                
+                
+                UITabBar.appearance().barTintColor = UIColor.clearColor()
+                UITabBar.appearance().backgroundImage = UIImage()
+                UITabBar.appearance().shadowImage = UIImage()
+                
+                let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+                    UIBlurEffectStyle.Light))
+                blur.frame = viewController.tabBar.bounds
+                blur.userInteractionEnabled = false //This allows touches to forward to the button.
+                viewController.tabBar.insertSubview(blur, atIndex: 0)
+
                 self.navigationController!.pushViewController(viewController, animated: true)
             }
             else{
@@ -101,6 +117,22 @@ class LoginViewController: UIViewController {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
 
                 let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+                viewController.tabBar.tintColor = UIColor(red: 126/255.0, green: 68/255.0, blue: 225/255.0, alpha: 1)
+                viewController.tabBar.backgroundColor = UIColor(red: 1, green: 1, blue:1, alpha: 0.5)
+                viewController.tabBar.translucent = true
+                
+                
+                
+                UITabBar.appearance().barTintColor = UIColor.clearColor()
+                UITabBar.appearance().backgroundImage = UIImage()
+                UITabBar.appearance().shadowImage = UIImage()
+                
+                let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+                    UIBlurEffectStyle.Light))
+                blur.frame = viewController.tabBar.bounds
+                blur.userInteractionEnabled = false //This allows touches to forward to the button.
+                viewController.tabBar.insertSubview(blur, atIndex: 0)
+
                 self.navigationController!.pushViewController(viewController, animated: true)
                 
 
