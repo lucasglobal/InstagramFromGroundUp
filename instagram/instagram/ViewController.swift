@@ -15,6 +15,7 @@ import MBProgressHUD
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
+    @IBOutlet weak var bluredViewBack: UIView!
     @IBOutlet weak var tableView: UITableView!
     var postsFetched: NSArray?
     
@@ -28,6 +29,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.tableView.insertSubview(refreshControl, atIndex: 0)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        //adding blur effect
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+            UIBlurEffectStyle.Light))
+        blur.frame = self.bluredViewBack.frame
+        blur.userInteractionEnabled = false //This allows touches to forward to the button.
+        self.bluredViewBack.insertSubview(blur, atIndex: 0)
+        
+
+
     }
     override func viewDidAppear(animated: Bool) {
         self.tabBarController?.tabBar.alpha = 1
@@ -142,6 +153,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.buttonWithName.titleLabel?.sizeToFit()
             cell.buttonWithName.setTitle(author.username, forState: .Normal)
             cell.textViewDescription.text = arrayData["caption"] as! String
+            
+            //adding blur effect
+            let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+                UIBlurEffectStyle.Light))
+            blur.frame = cell.frame
+            blur.userInteractionEnabled = false //This allows touches to forward to the button.
+            cell.insertSubview(blur, atIndex: 0)
+
         }
         return cell
     }
@@ -169,7 +188,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         buttonName.frame = CGRectMake(buttonProfilePicture.frame.origin.x + 20, returnedView.frame.size.height/4 + 5, 500, 10)
         buttonName.backgroundColor =  UIColor(red: 1, green: 1, blue: 1, alpha: 0)
         buttonName.setTitle(author.username!, forState: UIControlState.Normal)
-        buttonName.setTitleColor( UIColor.init(red: 49/255.0, green: 139/255.0, blue: 196/255.0, alpha: 1), forState: .Normal)
+        buttonName.setTitleColor( UIColor.init(red: 126/255.0, green: 68/255.0, blue: 225/255.0, alpha: 1), forState: .Normal)
         buttonName.titleLabel!.font = UIFont(name: "HelveticaNeue", size: 15)
         buttonName.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         //button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)

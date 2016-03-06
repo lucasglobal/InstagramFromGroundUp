@@ -16,6 +16,14 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var imageViewFetched: PFImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        //adding blur effect
+        let blur2 = UIVisualEffectView(effect: UIBlurEffect(style:
+            UIBlurEffectStyle.Light))
+        blur2.frame = self.textViewDescription.frame
+        blur2.userInteractionEnabled = false //This allows touches to forward to the button.
+        textViewDescription.insertSubview(blur2, atIndex: 0)
+        
         // Initialization code
     }
 
