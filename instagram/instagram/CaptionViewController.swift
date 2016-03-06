@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class CaptionViewController: UIViewController, UITextViewDelegate {
 
@@ -39,8 +40,14 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
         
         let resizedPicture = self.resize(pictureTaken, newSize: CGSize(width: 200, height: 267))
         
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+
         Post.postUserImage(resizedPicture, withCaption: self.textViewDescription.text) { (completed: Bool, error: NSError?) -> Void in
+            // Hide HUD once the network request comes back (must be done on main UI thread)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
             self.navigationController?.popViewControllerAnimated(true)
+
         }
     }
     override func didReceiveMemoryWarning() {

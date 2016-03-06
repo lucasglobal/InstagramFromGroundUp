@@ -53,11 +53,13 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods-instagram/Bolts.framework'
+  install_framework 'Pods-instagram/MBProgressHUD.framework'
   install_framework 'Pods-instagram/Parse.framework'
   install_framework 'Pods-instagram/ParseUI.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods-instagram/Bolts.framework'
+  install_framework 'Pods-instagram/MBProgressHUD.framework'
   install_framework 'Pods-instagram/Parse.framework'
   install_framework 'Pods-instagram/ParseUI.framework'
 fi
