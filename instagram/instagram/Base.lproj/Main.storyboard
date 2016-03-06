@@ -8,7 +8,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,28 +17,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47q-TO-RBc">
-                                <rect key="frame" x="62" y="145" width="183" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="F1g-H8-P3g">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47q-TO-RBc">
+                                <rect key="frame" x="11" y="145" width="299" height="30"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7D-q3-rp3">
-                                <rect key="frame" x="130" y="253" width="47" height="30"/>
-                                <state key="normal" title="Sign In"/>
+                                <rect key="frame" x="11" y="243" width="299" height="30"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.49019607843137253" green="0.2627450980392157" blue="0.87450980392156863" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJj-W2-O4C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPT-pj-ABP">
-                                <rect key="frame" x="126" y="291" width="55" height="30"/>
-                                <state key="normal" title="Sign Up"/>
+                                <rect key="frame" x="11" y="281" width="299" height="30"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="0.55000000000000004" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="0.49019607840000001" green="0.26274509800000001" blue="0.87450980389999999" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sJF-VJ-Nxa"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHv-6s-noW">
-                                <rect key="frame" x="62" y="81" width="183" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XHv-6s-noW">
+                                <rect key="frame" x="11" y="107" width="299" height="30"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.37254901960784315" green="0.37254901960784315" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
@@ -50,6 +65,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="passwordField" destination="47q-TO-RBc" id="Byv-9P-ddT"/>
+                        <outlet property="signInButton" destination="v7D-q3-rp3" id="kAg-kN-Ei2"/>
+                        <outlet property="signUpButton" destination="zPT-pj-ABP" id="4Eu-Or-Zbh"/>
                         <outlet property="userNameField" destination="XHv-6s-noW" id="hiI-HP-oNi"/>
                     </connections>
                 </viewController>
@@ -129,7 +146,7 @@
         <!--Picture-->
         <scene sceneID="wts-Sn-jKP">
             <objects>
-                <viewController id="32g-wx-6v3" customClass="TakePictureViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pictureVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="32g-wx-6v3" customClass="TakePictureViewController" customModule="instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JP9-7E-5RG"/>
                         <viewControllerLayoutGuide type="bottom" id="V7H-9d-2li"/>
@@ -193,7 +210,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Hfr-sv-pCm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UcV-jQ-BRV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UcV-jQ-BRV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3So-3s-K8s">
@@ -232,6 +249,7 @@
     <resources>
         <image name="personal-icon" width="24" height="24"/>
         <image name="picture-image2" width="60" height="60"/>
+        <image name="sunrise" width="1200" height="678"/>
         <image name="tag-icon" width="20" height="20"/>
         <image name="world-image2" width="60" height="60"/>
     </resources>

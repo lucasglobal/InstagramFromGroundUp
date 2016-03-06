@@ -11,8 +11,11 @@ import Parse
 import MBProgressHUD
 
 class LoginViewController: UIViewController {
+    @IBOutlet weak var signUpButton: UIButton!
 
+    @IBOutlet weak var bluredView: UIView!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var userNameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,20 @@ class LoginViewController: UIViewController {
         let notificationSettings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         // Do any additional setup after loading the view.
+        
+        
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+            UIBlurEffectStyle.Light))
+        blur.frame = self.signInButton.bounds
+        blur.userInteractionEnabled = false //This allows touches to forward to the button.
+        self.signInButton.insertSubview(blur, atIndex: 0)
+        
+        let blur2 = UIVisualEffectView(effect: UIBlurEffect(style:
+            UIBlurEffectStyle.Light))
+        blur2.frame = self.signUpButton.bounds
+        blur2.userInteractionEnabled = false //This allows touches to forward to the button.
+        self.signUpButton.insertSubview(blur2, atIndex: 0)
+
     }
 
     override func didReceiveMemoryWarning() {
