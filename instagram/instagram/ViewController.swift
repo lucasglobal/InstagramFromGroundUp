@@ -51,14 +51,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         query.findObjectsInBackgroundWithBlock { (posts: [PFObject]?, error: NSError?) -> Void in
             if let posts = posts{
                 if !posts.isEmpty{
+                    // Hide HUD once the network request comes back (must be done on main UI thread)
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+
                     self.postsFetched = posts
                     self.tableView.reloadData()
                 }
                 else{
+                    // Hide HUD once the network request comes back (must be done on main UI thread)
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+
                     print("there is no posts")
                 }
             }
             else{
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+
                 print("posts error")
             }
         }
@@ -93,10 +102,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     self.tableView.reloadData()
                 }
                 else{
+                    // Hide HUD once the network request comes back (must be done on main UI thread)
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+
                     print("there is no posts")
                 }
             }
             else{
+                // Hide HUD once the network request comes back (must be done on main UI thread)
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+
                 print("posts error")
             }
         }
