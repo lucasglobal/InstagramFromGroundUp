@@ -33,8 +33,9 @@ class LoginViewController: UIViewController {
                 print("you are logged in")
                 if PFUser.currentUser() != nil{
                 }
-
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                
+                let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+                self.navigationController!.pushViewController(viewController, animated: true)
             }
         }
     }
@@ -54,7 +55,8 @@ class LoginViewController: UIViewController {
                     print("there is a current user4")
                 }
 
-                self.performSegueWithIdentifier("loginSegue", sender: nil)
+                let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("tabBar") as! UITabBarController
+                self.navigationController!.pushViewController(viewController, animated: true)
                 
 
             }

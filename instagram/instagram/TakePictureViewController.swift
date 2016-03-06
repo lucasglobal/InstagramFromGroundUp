@@ -31,6 +31,8 @@ class TakePictureViewController: UIViewController, UIImagePickerControllerDelega
         let vc = UIImagePickerController()
         vc.delegate = self
         //vc.allowsEditing = true
+        
+        
         if(UIImagePickerController.isSourceTypeAvailable(.Camera)){
             vc.sourceType = UIImagePickerControllerSourceType.Camera
         }

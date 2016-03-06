@@ -68,16 +68,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="glz-Oz-oSB" customClass="PFImageView">
-                                <rect key="frame" x="10" y="93" width="240" height="128"/>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="426" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RXB-jX-Oi0">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="426" id="293-yS-uOb" customClass="PostsTableViewCell" customModule="instagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="426"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="293-yS-uOb" id="5F3-Sk-5i8">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="425.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ehl-xf-Urk" customClass="PFImageView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="285"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ybt-xh-Vhb">
+                                                    <rect key="frame" x="39" y="288" width="273" height="30"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.19215686274509802" green="0.54509803921568623" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="personal-icon" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-eu-qql">
+                                                    <rect key="frame" x="8" y="293" width="20" height="20"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tag-icon" translatesAutoresizingMaskIntoConstraints="NO" id="WSe-ub-2Hj">
+                                                    <rect key="frame" x="8" y="326" width="19" height="19"/>
+                                                </imageView>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-q1-2mG">
+                                                    <rect key="frame" x="35" y="318" width="281" height="99.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" red="0.42190171037741375" green="0.41552060834459525" blue="0.42999688985442674" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="buttonWithName" destination="Ybt-xh-Vhb" id="qVa-SK-xL2"/>
+                                            <outlet property="imageViewFetched" destination="Ehl-xf-Urk" id="02L-oX-aCG"/>
+                                            <outlet property="textViewDescription" destination="fEM-q1-2mG" id="rO6-cQ-7hN"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timeline" image="world-image2" selectedImage="world-image2" id="gcM-sJ-rAn"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="imageViewFetched" destination="glz-Oz-oSB" id="Mkm-q0-WsK"/>
+                        <outlet property="tableView" destination="RXB-jX-Oi0" id="dXx-Lo-gSy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OCa-IC-kl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,7 +228,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="personal-icon" width="24" height="24"/>
         <image name="picture-image2" width="60" height="60"/>
+        <image name="tag-icon" width="20" height="20"/>
         <image name="world-image2" width="60" height="60"/>
     </resources>
 </document>

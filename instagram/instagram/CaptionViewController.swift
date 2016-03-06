@@ -37,7 +37,6 @@ class CaptionViewController: UIViewController, UITextViewDelegate {
     func sendButtonNavigationBar(){
         print("send to server")
         
-        print("size \(pictureTaken.size)")
         let resizedPicture = self.resize(pictureTaken, newSize: CGSize(width: 200, height: 267))
         
         Post.postUserImage(resizedPicture, withCaption: self.textViewDescription.text) { (completed: Bool, error: NSError?) -> Void in
